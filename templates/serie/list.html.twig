@@ -1,8 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<section>
-    todo : liste des series
+<section class="series-list">
+
+    {% for serie in tabSeries%}
+    <article>
+            <a href="{{ path('serie_details', {'id':serie.id}) }}">
+                <img src="{{ asset('img/posters/series/'~serie.poster) }}" alt="{{ serie.name }}">
+            </a>
+    </article>
+    {% endfor %}
+
 </section>
 {% endblock %}
 
