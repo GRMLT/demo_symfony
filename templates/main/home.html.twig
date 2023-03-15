@@ -1,0 +1,62 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title  %}{{ parent() }} | Home {% endblock %}
+
+{% block body %}
+
+
+<h1>YOUPI</h1>
+{# zone de
+    commentaire
+#}
+
+{% set nomVariable = 'truc' %}      {# pour declarer les variables #}
+
+<h1>{{ nomVariable }}</h1> {# pour utiliser les variables #}
+
+{% set tableauCouleurs = ["blue", "green", "red"] %}
+<div>Il y a {{ tableauCouleurs | length }} couleur{{ tableauCouleurs | length > 1 ? 's' : '' }} dans le tableau</div>
+
+<div>{{ tableauCouleurs | join("<br>") |raw }}</div>            {# raw pour interpreter le html #}
+
+{% for c in tableauCouleurs %}
+    <p style="color:{{ c }}">{{ c }}</p>            {# on peut itérer un tableau #}
+    <div>{{ loop.index }}</div>
+    <div>{{ loop.last }}</div>
+{% endfor %}
+
+{% set film ={
+    title : "hitman le cobra",
+    actor : "philippe",
+    realisateur : "michael bay"
+} %}
+
+<p>{{ film.title }}</p>
+
+{% for key, val in film %}              {# on peut itérer un objet aussi #}
+    <div>{{ key }} = {{ val }}</div>
+{% endfor %}
+
+{% set actors = [] %}
+
+{% for a in actors %}
+    <div>{{ a }}</div>
+    {% else %}
+    <div>Ya pas de budget ya pas de talent</div>            {# si le tableau est vide #}
+{% endfor %}
+
+{% set actor = "Philippe !!" %}
+
+<h1>{{ actor | upper }}</h1>
+<h3>{{ actor | length }}</h3>
+
+<div>Date du jour : {{ "now" | date('d/m/y') }}</div>           {# filtres dates #}
+<div>Dans un an : {{ "+1 year" |date("d/m/y") }}</div>
+<div>Il y a un an : {{ "-1 year" |date("d/m/y H:i") }}</div>
+
+{% endblock %}
+
+
+
+

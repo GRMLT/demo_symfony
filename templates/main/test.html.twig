@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}} |Test{% endblock %}
+{% block body %}
+    <h1>Mon Test</h1>
+    <div>
+        {{ film1.title | raw}}
+        <br>
+        {{ film1.year | raw}}
+    </div>
+{% endblock %}
